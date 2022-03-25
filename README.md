@@ -11,7 +11,7 @@ Last updated 3/24/2022.
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 
-2. Head to the [Google Cloud Console](console.cloud.google.com)
+2. Head to the [Google Cloud Console](https://console.cloud.google.com)
 
 3. Click "Select Project"
 

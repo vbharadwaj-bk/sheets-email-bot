@@ -43,7 +43,7 @@ and save it in the same directory as the email / spreadsheet bot with the name "
 
 ![Oauth Second](/images/create_oauth_second_time.png)
 
-8. Click "Enabled APIs and Services -> Library" from the left-hand pane. You can also search this in 
+8. Click "APIs and Services -> Library" from the left-hand pane. You can also search this in 
 the taskbar at the top.
 
 ![Library](/images/library.png)

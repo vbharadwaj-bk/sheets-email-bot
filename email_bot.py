@@ -18,9 +18,9 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.compose',
 ]
 
 # This is only the test spreadsheet!
-RANGE_NAME = 'Sheet1!A:C'
+RANGE_NAME = 'Sheet1!A:E'
 
-def create_message(sender, to, subject, message_text):
+def create_message(sender, to, cc, bcc, subject, message_text):
   """Create a message for an email.
 
   Args:
@@ -34,6 +34,8 @@ def create_message(sender, to, subject, message_text):
   """
   message = MIMEText(message_text)
   message['to'] = to
+  message['cc'] = cc
+  message['bcc'] = bcc
   message['from'] = sender
   message['subject'] = subject
 
@@ -92,7 +94,7 @@ def main(sender_address, spreadsheet_id):
         rows = []
         service = build('sheets', 'v4', credentials=creds)
 
-        keys = ["recipients", "subject", "message"] 
+        keys = ["recipients", "cc", "bcc", "subject", "message"] 
 
         # Call the Sheets API
         sheet = service.spreadsheets()
@@ -111,12 +113,16 @@ def main(sender_address, spreadsheet_id):
         service = build('gmail', 'v1', credentials=creds)
 
         for el in rows:
-            el['formatted_emails'] = ', '.join(el['recipients'].replace(' ', '').split(','))
+            el['formatted_to'] = ', '.join(el['recipients'].replace(' ', '').split(','))
+            el['formatted_cc'] = ', '.join(el['cc'].replace(' ', '').split(','))
+            el['formatted_bcc'] = ', '.join(el['bcc'].replace(' ', '').split(','))
 
         # Compose the emails 
         for el in rows:
-            to = el['formatted_emails']
-            msg = create_message(sender_address, to, el['subject'], el["message"])
+            to = el['formatted_to']
+            cc = el['formatted_cc']
+            bcc = el['formatted_bcc']
+            msg = create_message(sender_address, to, cc, bcc, el['subject'], el["message"])
             print(f"Sending Email to {to}")
             send_message(service, 'me', msg)
 

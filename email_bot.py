@@ -123,7 +123,7 @@ def main(sender_address, spreadsheet_id):
             cc = el['formatted_cc']
             bcc = el['formatted_bcc']
             msg = create_message(sender_address, to, cc, bcc, el['subject'], el["message"])
-            print(f"Sending Email to {to}")
+            print(f"Sending Email to {to}, CC: {cc}, bCC: {bcc}")
             send_message(service, 'me', msg)
 
             # Waits two seconds between email messages so that

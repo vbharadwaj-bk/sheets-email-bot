@@ -3,31 +3,37 @@ You only need to do these steps once, and then you can write and run
 as many email / spreadsheet bots as you'd like. You can also access all other
 Google services through Python.
 
-Last updated 3/24/2022.
+Last updated 04/18/2022.
 
-1. Install Dependencies with pip:
+1. Clone the repository
+
+```
+git clone https://github.com/vbharadwaj-bk/sheets-email-bot.git
+```
+
+2. Install Dependencies with pip:
 
 ```
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 
-2. Head to the [Google Cloud Console](console.cloud.google.com)
+3. Head to the [Google Cloud Console](https://console.cloud.google.com)
 
-3. Click "Select Project"
+4. Click "Select Project"
 
 ![Select Project](/images/select_project.png)
 
-4. Create a new project and give it a name. You may need to browse
+5. Create a new project and give it a name. You may need to browse
 for a location to put the project under.
 
 ![New Project](/images/new_project.png)
 
-5. On the left-hand side, click APIs and Services -> Credentials. Create
+6. On the left-hand side, click APIs and Services -> Credentials. Create
 a new OAuth 2.0 Credential. You will need to configure a consent screen first.
 
 ![Oauth First](/images/create_oauth_key.png)
 
-6. On the consent screen configuration, select "External", but if your Google account is part of 
+7. On the consent screen configuration, select "External", but if your Google account is part of 
 an organization like Berkeley or LBL, you can press "Internal", and it's easier. 
 Fill out the rest of the
 information on the first screen. On the "scopes" page, don't select any scopes. 
@@ -36,27 +42,27 @@ address.
 
 ![Oauth Screen](/images/oauth_consent.png)
 
-7. Go back to Credentials on the left hand pane; you can now create a new Oauth key without
-interruption. Name the credential something arbtrary. You will get to a screen as shown below, that
+8. Go back to Credentials on the left hand pane; you can now create a new Oauth key without
+interruption. Name the credential something arbitrary. You will get to a screen as shown below, that
 will let you download your credentials as a json. Download the json credentials file
-and save it in the same directory as the email / spreadsheet bot with the name "credentials.json".
+and save it within the downloaded repository (next to `email_bot.py`) with the name "credentials.json".
 
 ![Oauth Second](/images/create_oauth_second_time.png)
 
-8. Click "Enabled APIs and Services -> Library" from the left-hand pane. You can also search this in 
+9. Click "APIs and Services -> Library" from the left-hand pane. You can also search this in 
 the taskbar at the top.
 
 ![Library](/images/library.png)
 
-9. Search and enable the Gmail API (first search result, click on it, enable).
+10. Search and enable the Gmail API (first search result, click on it, enable).
 
 ![Gmail](/images/gmail_api.png)
 
-10. Search and enable the Google Sheets API (same as above)
+11. Search and enable the Google Sheets API (same as above)
 
 ![Sheets](/images/sheets_api.png)
 
-11. Run the email bot using Python! You can find the ID of a
+12. Run the email bot using Python! You can find the ID of a
 Google spreadsheet in the URL bar, as shown in the image below,
 right after /d/ and before /view or /edit; it's the long string
 of characters (there's an example below the picture). 
